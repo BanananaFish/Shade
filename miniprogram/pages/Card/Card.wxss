@@ -1,0 +1,22 @@
+/* miniprogram/pages/Card/Card.wxss */
+@import "../../assets/weui.wxss";
+
+.card{
+    border-radius: 25px;
+}
+
+.yellow{
+    background: linear-gradient(to right,rgb(250, 234, 18), rgb(255, 123, 0));
+}
+
+.red{
+    background: linear-gradient(to right,rgb(255, 69, 69), rgb(235, 19, 127));
+}
+
+.black{
+    background: linear-gradient(to right,rgb(187, 187, 187), rgb(70, 70, 70));
+}
+
+.purple{
+    background: linear-gradient(to right,rgb(255, 101, 234),rgb(213, 43, 255));
+}

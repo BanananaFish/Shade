@@ -1,0 +1,18 @@
+<!--miniprogram/pages/Card/Card.wxml-->
+<view class="page">
+
+    <view class="page__hd">
+      <view class="page__title">卡片夹</view>
+      <view class="page__desc">把回忆印在这吧！</view>
+      </view>
+    <view class="page__bd page__bd_spacing">
+        <button class="weui-btn" type="default" bindtap="addCard">添加卡片</button>
+
+        <view wx:for="{{cards}}" wx:for-item="card">
+        <view class="weui-panel card {{card.color}}" style="padding:10px;margin:10rpx 0 10rpx 0">
+            <view class="weui-panel__hd" style="color:black;">{{card.name}}</view>
+            <view class="weui-panel__bd" style='padding-left:30rpx'>{{card.poem}}</view>
+        </view>
+        </view>
+    </view>
+</view>
