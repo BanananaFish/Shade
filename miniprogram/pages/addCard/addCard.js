@@ -1,4 +1,8 @@
 // miniprogram/pages/addCard/addCard.js
+wx.cloud.init();
+const db = wx.cloud.database();
+const Cards = db.collection('C');
+
 Page({
 
   /**
@@ -15,6 +19,37 @@ Page({
     text:"",
     barColor:[0,0,0],
     barColor2:[0,0,0]
+  },
+
+  formSubmit: function (e) {
+    const d = e.detail.value;
+    const colorid = d.colorid;
+    console.log(colorid)
+    const colortype = this.data.color[colorid];
+    
+
+    Cards.add({
+      data : {
+        event: {
+          name: d.name,
+        },
+        emotion: {
+          color: colortype,
+        },
+        poem: {
+          text: d.text,
+        }
+      },
+      success(res) {
+        console.log("submit success");
+        wx.showToast({
+          title:'成功加入卡包'
+        })
+      },
+      fail(res) {
+        console.error;
+      }
+    })
   },
 
   colorChanged: function (e) {

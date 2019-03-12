@@ -4,14 +4,14 @@
     </view>
 
     <view class="page__bd">
-    
+    <form bindsubmit='formSubmit'>
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_select {{color[colorIndex]}}">
             <view class="weui-cell__hd weui-cell__hd_in-select-after">
                 <view class="weui-label">情绪</view>
             </view>
             <view class="weui-cell__bd">
-            <picker bindchange="colorChanged" value="{{colorIndex}}" range="{{color}}">
+            <picker bindchange="colorChanged" value="{{colorIndex}}" range="{{color}}" name="colorid">
                     <view class="weui-select" style="color:{{color[colorIndex]}};">{{color[colorIndex]}}</view>
             </picker>
             </view>
@@ -22,12 +22,12 @@
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell">
             <view class="weui-cell__bd">
-                <textarea bindinput="textChanged" value="{{text}}" class="weui-textarea" placeholder="" style="height: 3.3em" />
+                <textarea bindinput="textChanged" value="{{text}}" name="text" class="weui-textarea" placeholder="" style="height: 3.3em" />
             </view>
         </view>
         <view class="weui-cell" style="background:linear-gradient(to right,rgb({{barColor[0]}},{{barColor[1]}},{{barColor[2]}}), rgb({{barColor2[0]}},{{barColor2[1]}},{{barColor2[2]}}))">
             <view class="weui-cell__bd">
-                <view class="bar" ></view>
+                <view class="bar"></view>
             </view>
         </view>
     </view>
@@ -36,10 +36,13 @@
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell">
             <view class="weui-cell__bd">
-                <input class="weui-input" placeholder=""/>
+                <input class="weui-input" name="name" placeholder=""/>
             </view>
         </view>
     </view>
+
+    <button class="weui-btn" type="default" form-type='submit'>提交</button>
+    </form>
 
     </view>
 </view>

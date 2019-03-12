@@ -8,10 +8,10 @@
     <view class="page__bd page__bd_spacing">
         <button class="weui-btn" type="default" bindtap="addCard">添加卡片</button>
 
-        <view wx:for="{{cards}}" wx:for-item="card">
-        <view class="weui-panel card {{card.color}}" style="padding:10px;margin:10rpx 0 10rpx 0">
-            <view class="weui-panel__hd" style="color:black;">{{card.name}}</view>
-            <view class="weui-panel__bd" style='padding-left:30rpx'>{{card.poem}}</view>
+        <view wx:for="{{cards}}" wx:for-item="card" bindtap='tapCard'>
+        <view class="weui-panel card {{card.emotion.color}}" style="padding:10px;margin:10rpx 0 10rpx 0">
+            <view class="weui-panel__hd" style="color:black;">{{card.event.name}}</view>
+            <view class="weui-panel__bd" style='padding-left:30rpx'>{{card.emotion.color}}</view>
         </view>
         </view>
     </view>

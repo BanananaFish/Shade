@@ -1,32 +1,20 @@
 // miniprogram/pages/Card/Card.js
+wx.cloud.init();
+const db = wx.cloud.database();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    cards:[
-      {
-        name:"阿卡丽",
-        color:"red",
-        poem:"123"
-      },
-      {
-        name:"亲亲",
-        color:"yellow",
-        poem:"123"
-      },
-      {
-        name:"热干面",
-        color:"purple",
-        poem:"123"
-      },
-      {
-        name:"送别",
-        color:"black",
-        poem:"123"
-      },
-    ]
+    cards:[],
+    color: [
+      "red",
+      "purple",
+      "black",
+      "yellow"
+    ],
   },
 
   addCard: function () {
@@ -40,11 +28,37 @@ Page({
     })
   },
 
+  tapCard: function () {
+    wx.showModal({
+    })
+  },
+
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+
+    //模拟加载
+    setTimeout(function () {
+      // complete
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
+    }, 1500);
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function () {
+    const PAGE = this;
+    db.collection('C').get({
+      success(e) {
+        console.log(e, e.data);
+        PAGE.setData({
+          cards: e.data || []
+        });
+        console.log(PAGE.data);
+      },
+      fail: console.error
+    });
   },
 
   /**
